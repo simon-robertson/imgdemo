@@ -6,7 +6,8 @@ const processImages = () => {
             continue
         }
 
-        image.style.visibility = "hidden"
+        image.style.pointerEvents = "none"
+        image.style.userSelect = "none"
 
         if (image.naturalWidth || image.naturalHeight) {
             replaceImage(image)
@@ -56,8 +57,10 @@ const getImageDataURL = (image) => {
 
     const dataURL = canvas.toDataURL("image/jpeg")
 
-    canvas.width = 0
-    canvas.height = 0
+    setTimeout(() => {
+        canvas.width = 0
+        canvas.height = 0
+    }, 100)
 
     return dataURL
 }
